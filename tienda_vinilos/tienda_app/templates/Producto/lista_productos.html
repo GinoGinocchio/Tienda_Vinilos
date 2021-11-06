@@ -1,0 +1,99 @@
+{% extends "tienda_app/base.html" %}
+{% load static %}
+
+{% block title %} Lista productos {% endblock %}
+
+
+{%block content %}
+<style>
+
+.card-header{
+        background-color: rgba(203, 207, 207, 0.74);
+    }
+    html {
+  min-height: 100%;
+  position: relative;
+}
+body {
+  margin: 0;
+  margin-bottom: 40px;
+}
+footer {
+  background-color: black;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 40px;
+  color: white;
+}
+
+</style>
+
+<div class= "card">
+
+    <div class = "card-body">
+        <center>
+        <div class = "card-header">
+    
+            <form method = "get">
+                
+                {{myFilter.form}}
+                <button class = "btn btn-primary " type = "submit"><i class="fas fa-search"></i> Buscar</button>
+                <button  class="btn btn-primary" type = "reset"> 
+                    <a href="{%url 'lista_productos' %} " style="text-decoration:none; color:white"><i class="fas fa-sync-alt"></i> Volver</a>
+                </button>
+               
+            </form>
+        
+      
+        </div>
+    </center>   
+        <h2> Lista de álbumes</h2>
+        
+
+<table class = "table table-striped table-hover table-responsive-sm">
+    <tr>
+
+        <th>Nombre</th>
+        <th><i class="fas fa-music"></i> Genero</th>
+        <th>Artista</th>
+        <th><i class="fas fa-tags"></i> Precio</th>
+        <th><i class="far fa-image"></i> Imagen álbum</th>
+        <th><i class="far fa-image"></i> Imagen [artista-banda]</th>
+        <th>Opciones</th>
+        <th></th>
+        
+    </tr>
+    {% for p in person_page_obj %}
+    <tr>
+        <td>{{p.nombre | title}}</td>
+        <td>{{p.genero}}</td>
+        <td>{{p.artista}}</td>
+        <td>S/. {{p.precio}}</td>
+        <td><img style="border: 2px solid gray; border-radius: 10px; height: 150px; width: 150px;" src="{{ p.imagen.url}}" alt=""></td>
+        <td><img style="border: 2px solid gray; border-radius: 10px; height: 150px; width: 150px;" src="{{ p.artista.imagen.url}}" alt=""></td>
+        <td> <a href = "{% url 'editar_producto' p.id %}" class="btn btn-warning"><i class="fas fa-edit"></i> Editar </a>
+            
+            <td>  <a href = "{% url 'eliminar_producto' p.id %}" class="btn btn-danger"><i class="fas fa-trash"></i> Eliminar </a>
+              
+    </tr>
+
+    {% endfor %}
+
+
+  
+</table>
+<nav aria-label="Page navigation example">
+    <ul class="pagination pagination-sm justify-content-center ">
+        {% if person_page_obj.has_previous %} 
+      <li class="page-item "><a class="page-link text-white bg-dark" href="{% url 'lista_productos' %}?page={{person_page_obj.previous_page_number}}">Anterior</a></li>
+      {% endif %}
+      {% if person_page_obj.has_next %}
+      <li class="page-item "><a class="page-link text-white bg-dark" href="{% url 'lista_productos' %}?page={{person_page_obj.next_page_number}}">Siguiente</a></li>
+      {% endif %}
+    </ul>
+  </nav>
+</div>
+    
+</div>
+{% endblock %}

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ingreso</title>
+</head>
+<body>
+        <h2>Ingresa tus credenciales</h2>
+        <hr>
+
+        <form action = "" method = "post">
+
+            {% csrf_token %}
+            {{form}}
+
+            <input type = "submit" value = "ingresar"> 
+        </form>
+</body>
+</html>

@@ -1,0 +1,151 @@
+{% extends "tienda_app/base.html" %}
+
+{% block title %} Perfil del producto {% endblock %}
+
+
+
+{%block content %}
+<style>
+    *{
+        margin:0;
+        padding:0;  
+    }
+    
+    .card{
+        background-color: rgba(203, 207, 207, 0.74);
+        max-width:400px;
+      
+    }
+
+    .col{
+        max-width: 380px;
+    }
+    .card-header{
+        background-color: rgba(203, 207, 207, 0.74);
+    }
+    /*pruebita*/
+    .cards{
+        position: relative;        
+        width: 900px;
+        margin: 200px auto;
+        background: #fff;
+        box-shadow: 7px 7px 50px 0px rgba(0,0,0,.7);
+        
+    }
+
+    .thumbnail{ 
+        float:left; 
+        position: relative;
+        left: 30px;
+        top: -30px;
+        height: 540px;      
+        width: 530px;
+        box-shadow: 8px 8px 50px 0px rgba(0,0,0,.7);
+     
+        transform-style: preserve-3d;
+        transition: 1s ease-in-out;
+    }
+    img.left {
+        position: absolute;               
+        left: 50%;                                       
+        top: 50%;
+        transform: translate(-50%, -50%);
+        height: 100%;
+        width: 100%;
+    }        
+    .right{
+        margin-left: 590px;
+        margin-right: 20px;
+    }
+    h1{
+        padding-top: 15px;
+        font-size: 1.3rem;
+    }
+    /*efecto flip*/
+    .thumbnail:hover{
+        transform: rotateY(180deg);
+
+    }
+    .thefront{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        
+
+        
+    }
+    .theback{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        transform: rotateY(180deg); 
+    }
+
+
+    /*fin efect flip*/
+
+    /*fin pruebita*/
+  
+    
+</style>
+<body>
+   
+    <!--viene lo chido-->
+    <div class="cards">
+
+        <div class="thumbnail">
+            <div class="thefront">
+                <div></div> 
+                <img src="{{ imagen.url}}" alt="" class="left">
+            </div>
+            <div class="theback">
+                <div></div> 
+             
+                <img src=" {{ imagen_artista.url}}" alt="" class="left">    
+            </div>
+                
+        </div>
+        
+        <div class="right">
+            <hr>
+            <h2>{{ nombre }}</h2>
+            <hr>
+            <div class="seperator"></div>
+                <p><strong>Artista</strong></p>
+                <h7>{{ artista }}</h7>   
+                <p><strong>Genero<br></strong></p>
+                <h7>{{ genero }}</h7>  
+                <p><strong>Stock<br></strong></p>
+                <h7>{{ stock }}</h7>                  
+                <p><strong>Precio<br></strong></p>
+                <h7>{{ precio }}</h7>                  
+                <p><strong>Descripcion<br></strong></p>
+                <h7>{{ descripcion}}</h7> 
+                <hr>
+                            
+            
+        </div>
+        <center><button  onclick="alerta()"data-product="{{id}}" data-action="add" type="button" class="btn btn-dark update-cart"><i class="fas fa-shopping-cart"></i> Añadir al Carrito</button>
+            <a href = "{% url 'catalogo' %}" class="btn btn-dark"> Volver</a></center> 
+        <hr>
+    </div>
+    <!--acaba lo chido--> 
+
+    
+</body>
+<script>
+    function alerta(){
+        Swal.fire({
+                title: "Añadido al carrito",
+                icon: "info",
+                timer: 2000
+              })    
+    }
+</script>
+
+{% endblock %}
+
+
+

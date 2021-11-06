@@ -1,0 +1,159 @@
+{% extends "tienda_app/base.html" %}
+
+{% block title %} Registro {% endblock %}
+
+
+
+{%block content %}
+{% load static %}
+<style>
+
+.form-group input, select, textarea{ 
+    width:300px;
+    font-family: 'Ubunt  u', sans-serif;
+    border:0.5px solid #1a1717;
+   }
+
+#boton{
+    margin-top: 15px;
+    width: 150px;
+    border: 0px;
+    border-color: aliceblue;
+}
+
+
+    
+
+body{
+    background: url('https://www.mondosonoro.com/wp-content/uploads/2019/07/discos.jpg') no-repeat;
+	background-size: cover;
+    min-height: 100%;
+}
+
+#registration-form{
+	max-width: 800px;
+	margin:70px auto;
+}
+
+#registration-form .image{
+	float:left;
+	background-image: url("https://i.blogs.es/2201b1/record/1366_2000.jpg");
+	height: 650px;
+	width: 50%;
+	background-size: cover;
+	background-position: 25%;
+}
+
+#registration-form .frm{
+	float:right;
+	height: 650px;
+    width: 50%;
+    min-width: 250px;
+    padding: 0 35px;
+    background-size: 100% 100%;
+    background-color: white;
+}
+
+#registration-form h1{
+	margin-top: 30px;
+	margin-bottom: 20px;
+}
+
+#registration-form .form-control{
+	width: 90%;
+	padding: 12px 20px;
+	height: auto;
+}
+
+@media screen and (max-width: 700px){
+	#registration-form .image{
+		width: 30%;
+	    background-position: 60%;
+	}
+
+	#registration-form .frm{
+		width: 70%;
+	}
+
+	#registration-form .form-control{
+		width: 100%;
+	}
+}
+
+@media screen and (max-width: 600px){
+	#registration-form .image{
+		display: none;
+	}
+
+	#registration-form .frm{
+		width: 100%;
+	}
+
+	#registration-form h1{
+		text-align: center;
+	}
+
+	#registration-form .btn{
+		width: 100%;
+		margin-top: 20px;
+	}
+    
+}
+</style>
+<body>
+    <div class="container" id="registration-form">
+        <div class="image"></div>
+        <div class="frm">
+            <h1><center>Registrate</center></h1>
+            <form id="estilo" action="" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="username"><i class="fas fa-user"></i> Usuario:</label><br>
+                    {{form.username}}
+                </div>
+                <div class="form-group">
+                    <label for="first_name"><i class="fas fa-id-badge"></i> Nombre :</label><br>
+                    {{form.first_name}}
+                </div>
+                <div class="form-group">
+                    <label for="email"><i class="fas fa-at"></i> Email :</label><br>
+                    {{form.email}}
+                </div>
+                <div class="form-group">
+                    <label for="celular"><i class="fas fa-phone-square"></i> Pais:</label><br>
+                    {{perfil_form.pais}}
+                </div>
+                <div class="form-group">
+                    <label for="password1"><i class="fas fa-key"></i> Contraseña:</label><br>
+                    {{form.password1}}
+                </div>
+                <div class="form-group">
+                    <label for="password2">Confirmar Contraseña:</label><br>
+                    {{form.password2}}
+                </div>
+                {% if form.errors %}
+                     {% for field in form %}
+                        {% for error in field.errors %}
+                            <script>
+                                Swal.fire({
+                                title: "{{error}}",
+                                icon: "error" 
+                                })      
+                            </script>
+                        {% endfor %}
+                    {% endfor %}
+                {% endif %}
+                <div class="form-group">
+                    <center><input id="boton" type="submit" value="Crear"class="btn btn-success btn-lg"></input></center>
+                </div>
+                
+            </form>
+            
+        </div>
+        
+    </div>
+    .
+</body>
+
+
+{% endblock %}

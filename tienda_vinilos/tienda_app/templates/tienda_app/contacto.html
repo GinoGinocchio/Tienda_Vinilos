@@ -1,0 +1,73 @@
+{% extends "tienda_app/base.html" %}
+
+{% block title %} Contacto {% endblock %}
+
+
+
+{%block content %}
+{% load static %}
+<style>
+    body{
+        background: url("/static/fondo.contacto.jpg") no-repeat;
+        margin:0px;
+        padding: 0px;   
+        width:100%;
+        height:100%;
+        background-size: cover;
+    }
+    .card-body{
+        background-color: rgba(250, 235, 215, 0.493);
+    }
+</style>
+
+<main class="container-sm pt-5 text-center ">
+    <div class="row pt-3"> 
+        <div class="col pt-3">
+            <div class="card border-dark mb-4">
+                <div class="card-header bg-dark text-white">
+                    <p>GINO GINOCCHIO</p>
+                </div>
+                <div class="card-body">
+                    <li><strong>Correo: </strong>gino.ginocchio@unmsm.edu.pe</li>
+                    <li><strong>Codigo: </strong>18200080</li>
+                </div>
+            </div>
+        </div>
+        <div class="col pt-3">
+            <div class="card mb-4 border-dark">
+                <div class="card-header bg-dark text-white">
+                    <p>CARLOS VALDIVIA</p>
+                </div>
+                <div class="card-body">
+                    <li><strong>Correo: </strong>carlos.valdivia11@unmsm.edu.pe</li>
+                    <li><strong>Codigo: </strong>18200300</li>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row pt-3">
+        <div class="col pt-3">
+            <div class="card border-dark mb-4">
+                <div class="card-header bg-dark text-white">
+                    <p>KATHERINE AMBROCIO</p>
+                </div>
+                <div class="card-body">
+                    <li><strong>Correo: </strong>katherine.ambrocio@unmsm.edu.pe</li>
+                    <li><strong>Codigo: </strong>18200324</li>
+                </div>
+            </div>
+        </div>
+        <div class="col pt-3">
+            <div class="card border-dark mb-4">
+                <div class="card-header bg-dark text-white">
+                    <p>JHON GONZALEZ</p>
+                </div>
+                <div class="card-body">
+                    <li><strong>Correo: </strong>john.gonzalez@unmsm.edu.pe</li>
+                    <li><strong>Codigo: </strong>18200269</li>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

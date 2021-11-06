@@ -1,0 +1,141 @@
+{% extends "tienda_app/base.html" %}
+{% load static %}
+
+{% block title %} Editar {% endblock %}
+
+
+
+{%block content %}
+
+
+<style>
+   
+  body {
+      background: url('https://www.mondosonoro.com/wp-content/uploads/2019/07/discos.jpg') no-repeat;
+      margin:0px;
+      font-family: 'Ubuntu', sans-serif;
+      background-size: cover;
+  }
+  h1, h2, h3, h4, h5, h6, a {
+    margin:0; padding:0;
+  }
+  .edit {
+    margin:0 auto;
+    max-width:500px;
+  }
+  .edit-header {
+    color:rgb(255, 255, 255);
+    text-align:center;
+    font-size:150%;
+  }
+  .edit-header h1 {
+    text-shadow: 0px 5px 15px #000; 
+  }
+  .edit-form {
+    border:.5px solid #fff;
+    background:#1516133a;
+    border-radius:10px;
+    box-shadow:0px 0px 10px #000;
+  }
+  .edit-form h3 {
+    text-align:left;
+    margin-left:40px;
+    color:#fff;
+  }
+  .edit-form {
+    box-sizing:border-box;
+    padding-top:15px;
+      padding-bottom:10%;
+    margin:5% auto;
+    text-align:center;
+  }
+  .edit input, select, textarea {
+     width:450px;
+     line-height:1.5em;
+     font-family: 'Ubunt  u', sans-serif;
+     margin:1em 2em;
+     border-radius:5px;
+     border:2px solid #f2f2f2;
+     outline:none;
+     padding-left:10px;
+     box-sizing: border-box;
+   }
+  .edit-form input[type="button"] {
+    height:30px;
+    width:100px;
+    background:#fff;
+    border:1px solid #f2f2f2;
+    border-radius:20px;
+    color: slategrey;
+    text-transform:uppercase;
+    font-family: 'Ubuntu', sans-serif;
+    cursor:pointer;
+  }
+  #boton {
+     width:150px;
+     line-height:1.5em;
+     font-family: 'Ubunt  u', sans-serif;
+     margin:1em 2em;
+     border-radius:5px;
+     border:2px solid #f2f2f2;
+     outline:none;
+     padding-left:10px;
+     box-sizing: border-box;
+   }
+  
+  
+  
+  /*Media Querie*/
+  @media only screen and (min-width : 150px) and (max-width : 530px){
+    .edit-form h3 {
+      text-align:center;
+      margin:0;
+    }
+    
+    .edit-button {
+      margin-bottom:10px;
+    }
+  }
+</style>
+
+
+<body>
+    <br>
+    <div class="edit">
+    <div class="edit-header">
+        <h1><i class="fas fa-users"></i> PERFIL</h1>
+    </div>
+    <form class="edit-form" action='' method="POST">
+        {% csrf_token %}
+        <h3><i class="fas fa-phone-square-alt"></i> Celular:</h3>
+        {{form.celular}}<br>
+        <h3><i class="fas fa-map-marker-alt"></i> Direccion:</h3>
+        {{form.direccion}}
+        <h3>Edad:</h3>
+        {{form.edad}}<br>
+        <h3><i class="fas fa-globe-americas"></i> Pais:</h3>
+        {{form.pais}}
+        <br>
+        <br>
+        {% if form.errors %}
+          {% for field in form %}
+              {% for error in field.errors %}
+                  <script>
+                    Swal.fire({
+                      title: "{{error}}",
+                      icon: "error" 
+                    })      
+                </script>
+              {% endfor %}
+          {% endfor %}
+        {% endif %}
+        <input id="boton" type="submit" value="Editar" class="btn btn-dark"/>
+        <br>
+    </form>
+    </div>
+
+</body>
+        
+
+
+{% endblock %}

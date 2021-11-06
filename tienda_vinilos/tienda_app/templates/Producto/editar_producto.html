@@ -1,0 +1,144 @@
+{% extends "tienda_app/base.html" %}
+{% load static %}
+
+{% block title %} Editar {% endblock %}
+
+
+
+{%block content %}
+
+
+<style>
+   
+   body {
+      background: url("{% static 'images/vinilo2.jpg' %}") no-repeat;
+      background-size: cover;
+      margin: 0px;
+   }
+   h1, h2, h3, h4, h5, h6, a {
+     margin:0; padding:0;
+   }
+   .edit {
+     margin:0 auto;
+     width:650px;
+   }
+   .edit-header {
+     color:rgb(255, 255, 255);
+     text-align:center;
+     font-size:150%;
+   }
+   .edit-header h1 {
+     text-shadow: 0px 5px 15px #000; 
+   }
+   .edit-form {
+     border:.5px solid #fff;
+     background:#1516138e;
+     border-radius:10px;
+     box-shadow:0px 0px 10px #000;
+   }
+   .edit-form h5 {
+     text-align:left;
+     margin-left:40px;
+     color:#fff;
+   }
+   .edit-form {
+     box-sizing:border-box;
+     padding-top:15px;
+       padding-bottom:10%;
+     margin:5% auto;
+     text-align:center;
+   }
+   .edit input, select, textarea {
+     width:550px;
+     line-height:1.5em;
+     font-family: 'Ubunt  u', sans-serif;
+     margin:1em 2em;
+     border-radius:5px;
+     border:2px solid #f2f2f2;
+     outline:none;
+     padding-left:10px;
+     box-sizing: border-box;
+   }
+   .edit-form1 input{
+       background-color: #f2f2f2;
+   }
+   .edit-form input[type="button"] {
+     height:30px;
+     width:100px;
+     background:#fff;
+     border:1px solid #f2f2f2;
+     border-radius:20px;
+     color: slategrey;
+     text-transform:uppercase;
+     
+     cursor:pointer;
+   }
+
+   #volver {
+     
+     width:550px;
+     line-height:1.5em;
+     font-family: 'Ubunt  u', sans-serif;
+     margin:1em 2em;
+     border-radius:5px;
+     border:2px solid #f2f2f2;
+     outline:none;
+     padding-left:10px;
+     box-sizing: border-box;
+  }
+   
+   
+
+
+
+   
+   /*Media Querie*/
+   @media only screen and (min-width : 150px) and (max-width : 530px){
+     .edit-form h3 {
+       text-align:center;
+       margin:0;
+     }
+     
+     .edit-button {
+       margin-bottom:10px;
+     }
+   }
+</style>
+
+
+<body>
+    <br>
+    <div class="edit">
+    <div class="edit-header">
+        <h1>Editar Producto</h1>
+    </div>
+    <form class="edit-form" action='' method="POST" enctype="multipart/form-data">
+        
+        {% csrf_token %}
+        <h5>Nombre del álbum:</h5>
+        <h6>{{form.nombre}}<br></h6>
+        <h5>Género:</h5>
+        <h6> {{form.genero}}</h6>
+       
+        <h5>Artista:</h5>
+        <h6> {{form.artista}}</h6>
+        <h5>Precio:</h5>
+        <h6> {{form.precio}}</h6>
+        <h5>Stock:</h5>
+        <h6> {{form.stock}}</h6>
+        <h5>Descripcion:</h5>
+        {{form.descripcion}}
+        <br>
+        <h5>Imagen:</h5>
+        
+        {{form.imagen}}
+        <div class='d-flex justify-content-center'>
+          <a id="volver" href="{%url 'lista_productos'  %}" class="btn btn-secondary " >Volver</a>
+          &nbsp;
+          <input type="submit" value="Editar" class="btn btn-dark"/>
+      </div>
+    </form>
+    </div>
+
+</body>
+{% endblock %}

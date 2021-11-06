@@ -1,0 +1,122 @@
+{% extends "tienda_app/base.html" %}
+{% load static %}
+
+{% block title %} Carrito {% endblock %}
+
+
+
+{%block content %}
+<style>
+      html {
+  min-height: 100%;
+  position: relative;
+}
+body {
+  margin: 0;
+  margin-bottom: 40px;
+}
+footer {
+  background-color: black;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 40px;
+  color: white;
+}
+    .box-element{
+        background-color: rgba(28, 32, 36, 0.589);
+        border-radius: 4px;
+        padding: 10px;
+    }
+    .row h5{
+        color:aliceblue
+    }
+    .row{
+        color:aliceblue
+    }
+    .cart-row{
+        display: flex;
+        align-items: flex-stretch;
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+        border-bottom: 5px aliceblue;
+    }
+
+    .cantidad{
+        display: inline-block;
+        font-weight: 700;
+        padding-right: 10px;
+    }
+
+    .chg-cantidad{
+        width: 15px;
+        cursor: pointer;
+        display: block;
+    }
+
+    #numero{
+        position: relative;
+        top: -10px;
+    }
+
+    
+
+</style>
+
+        
+    
+    <div class="row">
+        <div class="col-lg-12" >
+            <div class="box-element">
+                <br>
+                <br>
+                <table class="table">
+                    <tr>
+                        <th><h5><i class="fas fa-record-vinyl"></i> Productos: <strong>{{orden.get_cart_items}}</strong></h5></th>
+                        <th><h5>Total: <strong> S/.{{orden.get_cart_total}}.00</strong></h5></th>
+                        <th>
+                            <a class="btn-warning btn-lg"style="float:right; margin:5px; margin-right: 200px;" href="{% url 'compra' %}"> <i class="far fa-credit-card"></i> Comprar</a>
+                        </th>
+                    </tr>
+
+                </table>
+
+            </div>
+            <br>
+
+            <div class="box-element">
+
+                <div class="cart-row">
+                    <div style="flex:2"></div>
+                    <div style="flex:2"><i class="fas fa-record-vinyl"></i> Producto</div>
+                    <div style="flex:1"><i class="fas fa-tags"></i> Precio</div>
+                    <div style="flex:1">Cantidad</div>
+                    <div style="flex:1"> <i class="fas fa-hand-holding-usd"></i> Total</div>
+                </div>
+                <br>
+
+                
+                {% for p in productos %}
+
+                <div class="cart-row">
+                    <div style="flex:2" class="image"><img style="width: 200px; height: 200px; ;margin-left: 50px;" src="{{p.producto.imagen.url}}" ></div>
+                    <div style="flex:2; margin-top: 80px">{{p.producto.nombre}}</div>
+                    <div style="flex:1; margin-top: 80px">S/.{{p.producto.precio}}.00</div>
+                    <div style="flex:1; margin-top: 80px">
+                        <p id="numero" class="cantidad">{{p.cantidad}}</p>
+                        <div class="cantidad">
+                            <img data-product="{{p.producto.id}}" data-action="add" class="chg-cantidad update-cart" src="{% static 'images/angle-up.png' %}"></img>
+                            <img data-product="{{p.producto.id}}" data-action="remove" class="chg-cantidad update-cart" src="{% static 'images/angle-down.png' %}"></img>
+                        </div>
+                    </div>
+                    <div style="flex:1; margin-top: 80px">S/.{{p.get_total}}.00</div>
+                </div>
+                <br>
+                {% endfor %}
+            </div>
+
+        </div>
+
+    </div>
+
+{% endblock %}

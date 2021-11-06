@@ -1,0 +1,282 @@
+{%load static%}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.6/css/all.css">
+    <link rel="stylesheet" href="assets/css/style.css">     
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+    <title>
+        {% block title %} {% endblock %} 
+    </title>
+  </head>
+  <style>
+    body{
+        margin:0px;
+        padding: 0px;   
+        width:100%;
+        height:100%;
+        background-size: cover;
+    }
+    #sidebar {
+      width: 20%;
+      height: auto;
+      background: #343a40;
+    }
+    #d-flexi{
+      background: url("{% static 'images/vinilo2.jpg' %}") no-repeat;
+      background-size: cover;
+    }
+    i {
+      margin-right: 3px;
+      
+    }
+</style>
+  
+  <body>
+    
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+      <div class = "container">
+        <a class="navbar-brand" href="/">Vinyle Store</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
+            
+              {%if user.is_authenticated %}
+              
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" type="button" data-toggle="dropdown">
+                  {{user.username}}
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="{%url 'editar' user.perfilusuario.id %}"><i class="fas fa-edit"></i> Editar Perfil</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="{%url 'logout' %}">Cerrar sesion</a></li>
+                </ul>
+              </li>
+              
+              {% else %}
+              <li class = "nav-item">
+                  <a class = "nav-link" href="{%url 'login2' %}">Inicia sesion </a>
+              </li>
+
+
+              <li class = "nav-item">
+                <a class = "nav-link" href="{%url 'registro' %}">Registrarse</a>
+              </li>
+              {% endif %}
+              <li class="nav-item active">
+                <a class="nav-link" href="/"><i class="fas fa-home"> </i> Home<span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{%url 'contacto' %}"><i class="fas fa-user-tie"></i> Contacto</a>
+
+              <li class="nav-item">
+                <a class="nav-link" href="{%url 'catalogo' %}"><i class="fas fa-record-vinyl"></i> Catalogo</a>  
+              {%if perms.app.add_producto %}
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" type="button" data-toggle="dropdown">
+                  Productos
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="{%url 'agregar_producto' %}"><i class="fas fa-plus"></i> Agregar</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="{%url 'lista_productos' %}"><i class="fas fa-list"></i> Lista productos</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                
+                </ul>
+              </li>
+
+              {% endif %}
+
+              {%if user.is_authenticated %}  
+              <li class="nav-item">
+                  <a class="nav-link disabled" href="#">       Hola {{user.first_name}}, Bienvenido</a>
+              </li>
+            </li>
+            <a style="color:#fff; margin-top: 10px;margin-left: 100px" href="{%url 'carrito' %}" class="nav-item">
+              <i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i></a>
+              {% endif %}
+              
+          </ul>
+          
+
+          
+
+
+         
+        </div>
+      </div>
+      </nav>
+      <div class="d-flex" id="d-flexi"> 
+        <div id="sidebar">
+            <br>
+          <div class="p-2">
+            <a href="#" class="navbar-brand text-center text-light w-100 p-4 border-bottom">
+              Producto
+            </a>
+          </div>
+          <div id="sidebar-accordion" class="accordion">
+            <div class="list-group">
+              <a href="{%url 'agregar_artista' %}" class="list-group-item list-group-item-action bg-dark text-light">
+                <i class="fa fa-headphones mr-3" aria-hidden="true"></i>Agregar Artista
+              </a>
+              <a href="{%url 'agregar_genero' %}" class="list-group-item list-group-item-action bg-dark text-light">
+                <i class="fas fa-music mr-3" aria-hidden="true"></i>Agregar Genero
+              </a>
+              <a href="{%url 'agregar_producto' %}" class="list-group-item list-group-item-action bg-dark text-light">
+                <i class="fa fa-shopping-cart mr-3" aria-hidden="true"></i>Agregar Producto
+              </a>
+            </div>
+          </div>
+        </div>
+    {% block content %}
+
+
+
+    {% endblock %}
+    </div>
+    <style>
+      /***** Footer *****/
+
+.footer-top { padding: 60px 0; background: #333; text-align: left; color: #aaa; }
+.footer-top h3 { padding-bottom: 10px; color: #fff; }
+
+.footer-about img.logo-footer { max-width: 74px; margin-top: 0; margin-bottom: 18px; }
+.footer-about p a { color: #aaa; border-bottom: 1px dashed #666; }
+.footer-about p a:hover, .footer-about p a:focus { color: #fff; border-color: #aaa; }
+
+.footer-contact p { word-wrap: break-word; }
+.footer-contact i { padding-right: 10px; font-size: 18px; color: #666; }
+.footer-contact p a { color: #aaa; border-bottom: 1px dashed #666; }
+.footer-contact p a:hover, .footer-contact p a:focus { color: #fff; border-color: #aaa; }
+
+.footer-social a { display: inline-block; margin-right: 20px; margin-bottom: 8px; color: #777; border: 0; }
+.footer-social a:hover, .footer-social a:focus { color: #aaa; border: 0; }
+.footer-social i { font-size: 24px; vertical-align: middle; }
+
+.footer-bottom { padding: 15px 0; background: #444; text-align: left; color: #aaa; }
+
+.footer-copyright p { margin: 0; padding: 0.5rem 0; }
+.footer-copyright a { color: #fff; border: 0; }
+.footer-copyright a:hover, .footer-copyright a:focus { color: #aaa; border: 0; }
+
+/* footer navbar */
+.navbar { padding: 0; background: #444; backface-visibility: hidden; }
+
+.navbar-dark .navbar-nav { font-size: 15px; color: #fff; font-weight: 400; }
+.navbar-dark .navbar-nav .nav-link { color: #fff; border: 0; }
+.navbar-dark .navbar-nav .nav-link:hover { color: #aaa; }
+.navbar-dark .navbar-nav .nav-link:focus { color: #aaa; outline: 0; }
+
+.navbar-expand-md .navbar-nav .nav-link { padding-left: 1rem; padding-right: 1rem; }
+    </style>
+    <footer>
+      <div class="footer-top">
+        <div class="container">
+          <div class="row"> 
+            <div class="col-md-4 col-lg-4 footer-contact wow fadeInDown">
+              <h3>Vinyle Store</h3>
+              <p>
+                Somos una empresa comprometida con la venta de discos de vinilo de alta calidad.
+              </p>
+              <p>Gracias por elegirnos.</p>
+                  </div>
+            <div class="col-md-4 col-lg-4 offset-lg-1 footer-contact wow fadeInDown">
+              <h3>Contactanos</h3>
+                  <p><i class="fas fa-map-marker-alt"></i> Cercado de Lima 15081</p>
+                  <p><i class="fas fa-phone"></i> Telefono: 01-7930289</p>
+                  <p><i class="fas fa-envelope"></i> Email: vinilo.peru@gmail.com</p>
+                  <p><i class="fab fa-whatsapp"></i> Whatsapp: 929426588</p>
+                  </div>
+                  <div class="col-md-4 col-lg-3 footer-social wow fadeInUp">
+                    <h3>Siguenos</h3>
+                    <p>
+                      <a href="#"><i class="fab fa-facebook"></i></a> 
+            <a href="#"><i class="fab fa-twitter"></i></a> 
+            <a href="#"><i class="fab fa-google-plus-g"></i></a> 
+            <a href="#"><i class="fab fa-instagram"></i></a> 
+            <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </p>
+                  </div>
+            </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="container">
+          <div class="row justify-content-center">
+               <div class="col-md-5 footer-copyright">
+                    <p>&copy; copyright Vinyle.com Desarrollado por <strong>Vinyle.SAC</strong></a></p>
+                  </div>
+             </div>
+        </div>
+      </div>
+    </footer>
+    
+
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+    <!-- Option 2: jQuery, Popper.js, and Bootstrap JS
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+    -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+
+    {%if user.is_authenticated %}  
+      {% if messages %}
+        {% for n in messages %}
+          <script>
+              Swal.fire({
+                title: "{{n}}",
+                icon: "success" 
+              })      
+          </script>
+        {% endfor %}
+      {% endif %}
+    {% else %}
+    {% if messages %}
+    {% for n in messages %}
+      <script>
+          Swal.fire({
+            title: "{{n}}",
+            icon: "error" 
+          })      
+      </script>
+    {% endfor %}
+  {% endif %}
+    {% endif %}
+    {% if form.errors %}
+    {% for field in form %}
+        {% for error in field.errors %}
+            <script>
+              Swal.fire({
+                title: "{{error}}",
+                icon: "error" 
+              })      
+          </script>
+        {% endfor %}
+    {% endfor %}
+{% endif %}  
+
+  <script type= "text/JavaScript" src="{% static 'js/cart.js' %}"> </script>
+  </body>
+</html>

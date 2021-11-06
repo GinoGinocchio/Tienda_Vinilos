@@ -1,0 +1,111 @@
+{% extends "tienda_app/base.html" %}
+
+{% block title %} Pagina principal {% endblock %}
+
+
+
+{%block content %}
+
+<style>
+    .card{
+        background-color: rgba(203, 207, 207, 0.74);
+        max-width:400px;
+    }
+
+    .col{
+        max-width: 380px;
+    }
+    .card-header{
+        background-color: rgba(203, 207, 207, 0.74);
+    }
+    input {
+        margin: 8px 0;
+        width: 10%;
+        
+        border-radius: 2px;
+        margin-top: 6px;
+    
+    }
+  
+    
+</style>
+
+    <div class="container-xl pt-3 text-center min-vh-100">
+        <div class="row">
+            <div class = "card-header">
+    
+                <form method = "get">
+                    
+                    {{myFilter.form}}
+                    <button class = "btn btn-primary " type = "submit"><i class="fas fa-search"></i> Buscar</button>
+                    <button  class="btn btn-primary" type = "reset"> 
+                        <a href="{%url 'catalogo' %} " style="text-decoration:none; color:white"><i class="fas fa-sync-alt"></i> Volver</a>
+                    </button>
+                   
+                </form>
+            
+          
+            </div>
+
+            {% for p in person_page_obj %}
+                
+            <div class="col pt-3">
+                <div class="card border-dark mb-4">
+                    <div class="card-body">
+                        <img style="border: 2px solid gray; border-radius: 10px; height: 229px; width: 298px;" src="{{ p.imagen.url}}" alt="">
+                        <div class="caption pt-2">
+                            <p><strong>Nombre del álbum</strong></p>
+                            <h6>{{ p.nombre }}</h6>
+                            <hr>
+                            <p><strong>Artista</strong></p>
+                            <h6>{{ p.artista }}</h6>   
+                            <hr>
+                            <p><strong>Precio</strong></p>
+                            <h6>{{ p.precio }}</h6>  
+                            <hr>
+
+                        </div>
+                        
+
+                    <button  onclick="alerta()" data-product="{{p.id}}" data-action="add" type="button" class="btn-dark w-75 add-btn update-cart"><i class="fas fa-shopping-cart"></i> Añadir al Carrito</button>
+                    <hr>
+                    <a href = "{% url 'perfil_producto' p.id %}" class="btn btn-dark"> Ver detalles </a>
+                    </div>
+                </div>
+            </div>
+            
+            {% endfor %}
+          
+        </div>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination pagination-sm justify-content-center ">
+                {% if person_page_obj.has_previous %} 
+              <li class="page-item "><a class="page-link text-dark" href="{% url 'catalogo' %}?page={{person_page_obj.previous_page_number}}">Anterior</a></li>
+              {% endif %}
+              {% if person_page_obj.has_next %}
+              <li class="page-item "><a class="page-link text-dark" href="{% url 'catalogo' %}?page={{person_page_obj.next_page_number}}">Siguiente</a></li>
+              {% endif %}
+            </ul>
+          </nav>
+    </div>
+    <br>
+    <br>
+    <br>
+
+    
+</body>
+
+<script>
+    let timerInterval
+    function alerta(){
+        Swal.fire({
+                title: "Añadido al carrito",
+                icon: "info",
+                timer: 2000
+    
+              })    
+    }
+</script>
+
+
+{% endblock %}
