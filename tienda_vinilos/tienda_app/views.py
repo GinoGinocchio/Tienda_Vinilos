@@ -283,7 +283,7 @@ def login2(request):
             messages.success(request, "Ingreso Correcto")
             return redirect(to="catalogo")
         else:
-            messages.success(request, "Contraseña o usario incorrecto")
+            messages.error(request, "Contraseña o usario incorrecto")
     context={}
     return render (request, 'tienda_app/login2.html', context)
 
