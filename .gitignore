@@ -56,3 +56,5 @@ docs/_build/
 target/
 
 *.sqlite3
+tienda_vinilos/db.sqlite3
+tienda_vinilos/db.sqlite3
