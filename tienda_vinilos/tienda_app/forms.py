@@ -1,3 +1,5 @@
+#Archivo para los formatos de los formularios de los modelos de la base de datos
+
 from django import forms
 from django.core.exceptions import ValidationError
 from django.contrib.auth.forms import UserCreationForm
@@ -5,6 +7,8 @@ from django.contrib.auth.models import User
 from .models import PerfilUsuario, Producto
 from .models import *
 from django.forms import MultiWidget, TextInput
+
+#Formato del Formulario de creacion de usuario para login
 
 class UserRegisterForm(UserCreationForm):
     username=forms.CharField(max_length=20)
@@ -24,7 +28,9 @@ class UserRegisterForm(UserCreationForm):
         model=User
         fields = ['username','email','first_name','password1','password2']
 
-        
+
+#Formato de extension a la creacion de usuario
+       
 class Perfilform(forms.ModelForm):
     choices = [
         ('argentina', 'Argentina'),
@@ -39,6 +45,8 @@ class Perfilform(forms.ModelForm):
     class Meta:
         model= PerfilUsuario
         fields=['pais']
+
+#Formato del Formulario para la edicion de Usuario
 
 class Modform(forms.ModelForm):
     direccion=forms.CharField(max_length=50)
@@ -68,12 +76,16 @@ class Modform(forms.ModelForm):
         model=PerfilUsuario
         fields=['celular','direccion','edad','pais']
 
+#Formato del formulario de datos del producto
+
 class Productoform(forms.ModelForm):
     precio=forms.IntegerField(min_value=1,max_value=1000)
     stock=forms.IntegerField(min_value=0, max_value=200)
     class Meta:
         model=Producto
         fields= '__all__'
+
+#Formato del formulario de Genero del producto
 
 class Generoform(forms.ModelForm):
     nombre=forms.CharField(max_length=15)
@@ -89,6 +101,8 @@ class Generoform(forms.ModelForm):
     class Meta:
         model=Genero
         fields= '__all__'
+
+#Formato del formulario de Artista del producto
 
 class Artistaform(forms.ModelForm):
     class Meta:

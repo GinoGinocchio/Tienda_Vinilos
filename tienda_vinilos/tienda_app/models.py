@@ -1,7 +1,9 @@
+#Archivo para la creacion de tablas en la Base de Datos
+
 from django.db import models
 from django.contrib.auth.models import User
 
-# Create your models here.
+#Tabla de Usuarios
 
 class PerfilUsuario(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -13,17 +15,23 @@ class PerfilUsuario(models.Model):
     def __str__(self):
         return self.user.username
 
+#Tabla de Artistas
+
 class Artista(models.Model):
     nombre = models.CharField(max_length=70)
     imagen = models.ImageField(upload_to="artistas", null=True, blank=True)
     def __str__(self):
         return self.nombre
 
+#Tabla de Generos
+
 class Genero(models.Model):
     nombre = models.CharField(max_length=70)
 
     def __str__(self):
         return self.nombre
+
+#Tabla de productos
 
 class Producto(models.Model):
     nombre = models.CharField(max_length=70)
@@ -38,6 +46,8 @@ class Producto(models.Model):
     
     def __str__(self):
         return self.nombre
+
+#Tabla de Ordenes del carrito
 
 class Orden(models.Model):
     user= models.ForeignKey(PerfilUsuario, on_delete=models.SET_NULL, blank=True, null=True)
@@ -68,6 +78,7 @@ class Orden(models.Model):
         total=sum([producto.cantidad for producto in ordenproductos])
         return total
         
+#Tabla de procesamiento de Ordenes
 
 class OrdenProducto(models.Model):
     producto= models.ForeignKey(Producto,on_delete=models.SET_NULL, blank=True, null=True)
@@ -80,6 +91,7 @@ class OrdenProducto(models.Model):
         total=self.producto.precio * self.cantidad
         return total
 
+#Tabla de delivery 
 
 class Shipping(models.Model):
     user= models.ForeignKey(PerfilUsuario, on_delete=models.SET_NULL, blank=True, null=True)

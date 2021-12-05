@@ -1,3 +1,5 @@
+#Componentes auxiliares  a instalar
+
 django == 3.2.9
 pillow
 django-filter

@@ -12,8 +12,9 @@ from django.http import JsonResponse
 import json
 import datetime
 
+#Funciones a usar en los templates
 
-# Create your views here.
+#Funciones del home de la pagina
 
 def home(request):
     productos = Producto.objects.all()
@@ -22,13 +23,19 @@ def home(request):
     }
     return render(request, 'tienda_app/home.html', data)
 
+#Funciones de la seccion contacto de la pagina
+
 def contacto(request):
 
     return render (request, 'tienda_app/contacto.html')
 
+#Funciones del login por defecto de Django
+
 def login1(request):
 
     return render (request, 'registration/login.html')
+
+#Funciones del Catalogo de productos de la pagina
 
 def catalogo(request):
     context = {}
@@ -51,7 +58,7 @@ def catalogo(request):
 
     return render(request, 'tienda_app/catalogo.html', context=context)
 
-# CARRITO
+#Funciones del carrito
 
 def carrito(request):
     if request.user.is_authenticated:
@@ -104,6 +111,8 @@ def updateItem(request):
     
     return JsonResponse ('Producto fue agregado', safe=False)
 
+#Funciones del procesamiento de ordenes
+
 def procesar_orden(request):
 
     transaccion_id=datetime.datetime.now().timestamp()
@@ -136,7 +145,7 @@ def procesar_orden(request):
     return JsonResponse('Subiendo Pago', safe=False)
 
 
-# PRODUCTOS
+#Funcion de Agregar genero
 
 def agregar_genero(request):
     
@@ -154,6 +163,8 @@ def agregar_genero(request):
 
     return render (request, 'Producto/agregar_genero.html', data)
 
+#Funcion de agregar artista
+
 def agregar_artista(request):
     
     data={
@@ -170,6 +181,7 @@ def agregar_artista(request):
 
     return render (request, 'Producto/agregar_artista.html', data)
 
+#Funcion de agregar producto
 
 def agregar_producto(request):
     
@@ -186,6 +198,8 @@ def agregar_producto(request):
             data["form"] = formulario
 
     return render (request, 'Producto/agregar_producto.html', data)
+
+#Funcion para el buscar/ filtrar productos
 
 def listar_productos(request):
     context = {}
@@ -208,12 +222,16 @@ def listar_productos(request):
 
     return render(request, 'Producto/lista_productos.html', context=context)
 
+#Funcion para eliminar productos
+
 def eliminar_producto(request,id):
 
     producto = get_object_or_404(Producto, id = id)
     producto.delete()
     messages.success(request, "Producto Eliminado")
     return redirect(to = "lista_productos")
+
+#Funcion para editar producto
 
 def editar_producto(request, id):
     producto= Producto.objects.get(id=id)
@@ -233,6 +251,8 @@ def editar_producto(request, id):
             
     return render(request,'Producto/editar_producto.html' , data)
 
+#Funciones para la edicion de un producto
+
 def perfil_producto(request, id):
     producto= Producto.objects.get(id=id)
  
@@ -251,7 +271,7 @@ def perfil_producto(request, id):
             
     return render(request,'tienda_app/perfil_producto.html' , context)
 
-#USUARIOS
+#Funcion para la edicion de perfil de usuario
 
 def editar(request,id):
     user= PerfilUsuario.objects.get(id=id)
@@ -271,7 +291,7 @@ def editar(request,id):
     return render (request, 'tienda_app/editar.html', data)
 
 
-# LOGIN , AUTENTICACION
+#Funcion del login usado por nosotros
 
 def login2(request):
     if request.method == 'POST':
@@ -286,6 +306,8 @@ def login2(request):
             messages.error(request, "Contraseña o usario incorrecto")
     context={}
     return render (request, 'tienda_app/login2.html', context)
+
+#Funcion del registro de usuario
 
 def registro(request):
     if request.method == 'POST':  

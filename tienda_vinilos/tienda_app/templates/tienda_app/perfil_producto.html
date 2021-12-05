@@ -5,91 +5,10 @@
 
 
 {%block content %}
-<style>
-    *{
-        margin:0;
-        padding:0;  
-    }
-    
-    .card{
-        background-color: rgba(203, 207, 207, 0.74);
-        max-width:400px;
-      
-    }
+{%load static %}
 
-    .col{
-        max-width: 380px;
-    }
-    .card-header{
-        background-color: rgba(203, 207, 207, 0.74);
-    }
-    /*pruebita*/
-    .cards{
-        position: relative;        
-        width: 900px;
-        margin: 200px auto;
-        background: #fff;
-        box-shadow: 7px 7px 50px 0px rgba(0,0,0,.7);
-        
-    }
+<link rel="stylesheet" href="{% static 'css/perfil_producto.css' %}">
 
-    .thumbnail{ 
-        float:left; 
-        position: relative;
-        left: 30px;
-        top: -30px;
-        height: 540px;      
-        width: 530px;
-        box-shadow: 8px 8px 50px 0px rgba(0,0,0,.7);
-     
-        transform-style: preserve-3d;
-        transition: 1s ease-in-out;
-    }
-    img.left {
-        position: absolute;               
-        left: 50%;                                       
-        top: 50%;
-        transform: translate(-50%, -50%);
-        height: 100%;
-        width: 100%;
-    }        
-    .right{
-        margin-left: 590px;
-        margin-right: 20px;
-    }
-    h1{
-        padding-top: 15px;
-        font-size: 1.3rem;
-    }
-    /*efecto flip*/
-    .thumbnail:hover{
-        transform: rotateY(180deg);
-
-    }
-    .thefront{
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        backface-visibility: hidden;
-        
-
-        
-    }
-    .theback{
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        backface-visibility: hidden;
-        transform: rotateY(180deg); 
-    }
-
-
-    /*fin efect flip*/
-
-    /*fin pruebita*/
-  
-    
-</style>
 <body>
    
     <!--viene lo chido-->

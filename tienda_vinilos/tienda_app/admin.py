@@ -1,7 +1,8 @@
 from django.contrib import admin
 from .models import PerfilUsuario, Producto, Artista, Genero
 from .models import *
-# Register your models here.
+
+# Modelos registrados en la base de datos de Django
 
 admin.site.register(PerfilUsuario)
 admin.site.register(Producto)

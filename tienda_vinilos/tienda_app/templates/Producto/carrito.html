@@ -6,65 +6,9 @@
 
 
 {%block content %}
-<style>
-      html {
-  min-height: 100%;
-  position: relative;
-}
-body {
-  margin: 0;
-  margin-bottom: 40px;
-}
-footer {
-  background-color: black;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 40px;
-  color: white;
-}
-    .box-element{
-        background-color: rgba(28, 32, 36, 0.589);
-        border-radius: 4px;
-        padding: 10px;
-    }
-    .row h5{
-        color:aliceblue
-    }
-    .row{
-        color:aliceblue
-    }
-    .cart-row{
-        display: flex;
-        align-items: flex-stretch;
-        padding-bottom: 10px;
-        margin-bottom: 10px;
-        border-bottom: 5px aliceblue;
-    }
 
-    .cantidad{
-        display: inline-block;
-        font-weight: 700;
-        padding-right: 10px;
-    }
+<link type='text/css' href= '{% static "css/carrito.css" %}' rel="stylesheet" >
 
-    .chg-cantidad{
-        width: 15px;
-        cursor: pointer;
-        display: block;
-    }
-
-    #numero{
-        position: relative;
-        top: -10px;
-    }
-
-    
-
-</style>
-
-        
-    
     <div class="row">
         <div class="col-lg-12" >
             <div class="box-element">
