@@ -14,12 +14,12 @@
             <div class="box-element">
                 <br>
                 <br>
-                <table class="table">
+                <table class="table"  aria-describedby="temporal">
                     <tr>
-                        <th><h5><i class="fas fa-record-vinyl"></i> Productos: <strong>{{orden.get_cart_items}}</strong></h5></th>
-                        <th><h5>Total: <strong> S/.{{orden.get_cart_total}}.00</strong></h5></th>
-                        <th>
-                            <a class="btn-warning btn-lg"style="float:right; margin:5px; margin-right: 200px;" href="{% url 'compra' %}"> <i class="far fa-credit-card"></i> Comprar</a>
+                        <th id="productos"><h5><span class="fas fa-record-vinyl"></span> Productos: <strong>{{orden.get_cart_items}}</strong></h5></th>
+                        <th id="total"><h5>Total: <strong> S/.{{orden.get_cart_total}}.00</strong></h5></th>
+                        <th id="imagen">
+                            <a class="btn-warning btn-lg"style="float:right; margin:5px; margin-right: 200px;" href="{% url 'compra' %}"> <span class="far fa-credit-card"></span> Comprar</a>
                         </th>
                     </tr>
 
@@ -32,10 +32,10 @@
 
                 <div class="cart-row">
                     <div style="flex:2"></div>
-                    <div style="flex:2"><i class="fas fa-record-vinyl"></i> Producto</div>
-                    <div style="flex:1"><i class="fas fa-tags"></i> Precio</div>
+                    <div style="flex:2"><span class="fas fa-record-vinyl"></span> Producto</div>
+                    <div style="flex:1"><span class="fas fa-tags"></span> Precio</div>
                     <div style="flex:1">Cantidad</div>
-                    <div style="flex:1"> <i class="fas fa-hand-holding-usd"></i> Total</div>
+                    <div style="flex:1"> <span class="fas fa-hand-holding-usd"></span> Total</div>
                 </div>
                 <br>
 
@@ -43,14 +43,14 @@
                 {% for p in productos %}
 
                 <div class="cart-row">
-                    <div style="flex:2" class="image"><img style="width: 200px; height: 200px; ;margin-left: 50px;" src="{{p.producto.imagen.url}}" ></div>
+                    <div style="flex:2" class="image"><img style="width: 200px; height: 200px; ;margin-left: 50px;" src="{{p.producto.imagen.url}}" alt="relleno" ></div>
                     <div style="flex:2; margin-top: 80px">{{p.producto.nombre}}</div>
                     <div style="flex:1; margin-top: 80px">S/.{{p.producto.precio}}.00</div>
                     <div style="flex:1; margin-top: 80px">
                         <p id="numero" class="cantidad">{{p.cantidad}}</p>
                         <div class="cantidad">
-                            <img data-product="{{p.producto.id}}" data-action="add" class="chg-cantidad update-cart" src="{% static 'images/angle-up.png' %}"></img>
-                            <img data-product="{{p.producto.id}}" data-action="remove" class="chg-cantidad update-cart" src="{% static 'images/angle-down.png' %}"></img>
+                            <img data-product="{{p.producto.id}}" data-action="add" class="chg-cantidad update-cart" src="{% static 'images/angle-up.png' %}" alt="{{p.producto.id}}"></img>
+                            <img data-product="{{p.producto.id}}" data-action="remove" class="chg-cantidad update-cart" src="{% static 'images/angle-down.png' %}" alt="{{p.producto.id}}"></img>
                         </div>
                     </div>
                     <div style="flex:1; margin-top: 80px">S/.{{p.get_total}}.00</div>

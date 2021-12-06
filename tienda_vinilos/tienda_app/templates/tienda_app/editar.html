@@ -13,17 +13,17 @@
     <br>
     <div class="edit">
     <div class="edit-header">
-        <h1><i class="fas fa-users"></i> PERFIL</h1>
+        <h1><span class="fas fa-users"></span> PERFIL</h1>
     </div>
     <form class="edit-form" action='' method="POST">
         {% csrf_token %}
-        <h3><i class="fas fa-phone-square-alt"></i> Celular:</h3>
+        <h3><span class="fas fa-phone-square-alt"></span> Celular:</h3>
         {{form.celular}}<br>
-        <h3><i class="fas fa-map-marker-alt"></i> Direccion:</h3>
+        <h3><span class="fas fa-map-marker-alt"></span> Direccion:</h3>
         {{form.direccion}}
         <h3>Edad:</h3>
         {{form.edad}}<br>
-        <h3><i class="fas fa-globe-americas"></i> Pais:</h3>
+        <h3><span class="fas fa-globe-americas"></span> Pais:</h3>
         {{form.pais}}
         <br>
         <br>

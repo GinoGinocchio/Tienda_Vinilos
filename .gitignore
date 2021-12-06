@@ -41,6 +41,8 @@ htmlcov/
 nosetests.xml
 coverage.xml
 *,cover
+.scannerwork/
+
 
 # Translations
 *.mo
@@ -57,4 +59,4 @@ target/
 
 *.sqlite3
 tienda_vinilos/db.sqlite3
-tienda_vinilos/db.sqlite3
+tienda_vinilos/node_modules/

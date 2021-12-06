@@ -23,7 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'aj2*q#^qv4h(0jl(2tmy+lmor_&8c)&ie2o)fk+*wxa-n!tj9)'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# El proyecto todavía se encuentra en un ambiente de producción
+# por lo que es necesario tener esta opción activada
+DEBUG = True # //NOSONAR
 
 ALLOWED_HOSTS = ['carlord527.pythonanywhere.com','127.0.0.1']
 
@@ -124,8 +126,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
-
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATIC_ROOT = 'dist/static/'
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+    # This defines a prefix so the url paths will become `/static/node_modules/...`
+    ('node_modules', os.path.join(BASE_DIR, 'node_modules/')),
+)
 
 import os
 

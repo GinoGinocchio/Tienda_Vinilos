@@ -63,7 +63,7 @@
             <hr>
             {% for p in productos %}
             <div class="cart-row">
-                <div style="flex:2; margin-left: 50px;"><img class="row-image" src="{{p.producto.imagen.url}}"></div>
+                <div style="flex:2; margin-left: 50px;"><img class="row-image" src="{{p.producto.imagen.url}}" alt="temporal"></div>
                 <div style="flex:2; margin-right:100px;margin-top: 20px;"><p>{{p.producto.nombre}}</p></div>
 				<div style="flex:1; margin-right: 10;margin-top: 20px;"><p>S/.{{p.producto.precio}}.00</p></div>
 				<div style="flex:1; margin-left: 50px;margin-top: 20px;"><p>x{{p.cantidad}}</p></div>
