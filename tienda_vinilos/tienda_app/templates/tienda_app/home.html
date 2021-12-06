@@ -43,7 +43,7 @@
                   {{user.username}}
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="{%url 'editar' user.perfilusuario.id %}"><i class="fas fa-edit"></i> Editar Perfil</a></li>
+                  <li><a class="dropdown-item" href="{%url 'editar' user.perfilusuario.id %}"><span class="fas fa-edit"></span> Editar Perfil</a></li>
                   <li><hr class="dropdown-divider"></li>
                   <li><a class="dropdown-item" href="{%url 'logout' %}"> Cerrar sesion</a></li>
                 </ul>
@@ -60,7 +60,7 @@
               </li>
               {% endif %}
               <li class="nav-item active">
-                <a class="nav-link" href="/"><i class="fas fa-home"></i> Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/"><span class="fas fa-home"></span> Home <span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{%url 'contacto' %}">Contacto</a>
@@ -72,9 +72,9 @@
                   Productos
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="{%url 'agregar_producto' %}"><i class="fas fa-plus"></i> Agregar</a></li>
+                  <li><a class="dropdown-item" href="{%url 'agregar_producto' %}"><span class="fas fa-plus"></span> Agregar</a></li>
                   <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="{%url 'lista_productos' %}"><i class="fas fa-list"></i> Lista productos</a></li>
+                  <li><a class="dropdown-item" href="{%url 'lista_productos' %}"><span class="fas fa-list"></span> Lista productos</a></li>
                   <li><hr class="dropdown-divider"></li>
                 
                 </ul>
@@ -87,7 +87,7 @@
                   <a class="nav-link disabled" href="#">       Hola {{user.first_name}}, Bienvenido</a>
               </li>
               <a style="color:#fff; margin-top: 10px;margin-left: 100px" href="{%url 'carrito' %}" class="nav-item">
-                <i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i></a>
+                <span class="fa fa-shopping-cart fa-lg" aria-hidden="true"></span></a>
               {% endif %}
               
           </ul>

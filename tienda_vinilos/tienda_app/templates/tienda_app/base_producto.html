@@ -49,7 +49,7 @@
                   {{user.username}}
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="{%url 'editar' user.perfilusuario.id %}"><i class="fas fa-edit"></i> Editar Perfil</a></li>
+                  <li><a class="dropdown-item" href="{%url 'editar' user.perfilusuario.id %}"><span class="fas fa-edit"></span> Editar Perfil</a></li>
                   <li><hr class="dropdown-divider"></li>
                   <li><a class="dropdown-item" href="{%url 'logout' %}">Cerrar sesion</a></li>
                 </ul>
@@ -66,13 +66,13 @@
               </li>
               {% endif %}
               <li class="nav-item active">
-                <a class="nav-link" href="/"><i class="fas fa-home"> </i> Home<span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/"><span class="fas fa-home"> </span> Home<span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{%url 'contacto' %}"><i class="fas fa-user-tie"></i> Contacto</a>
+                <a class="nav-link" href="{%url 'contacto' %}"><span class="fas fa-user-tie"></span> Contacto</a>
 
               <li class="nav-item">
-                <a class="nav-link" href="{%url 'catalogo' %}"><i class="fas fa-record-vinyl"></i> Catalogo</a>  
+                <a class="nav-link" href="{%url 'catalogo' %}"><span class="fas fa-record-vinyl"></span> Catalogo</a>  
               {%if perms.app.add_producto %}
 
               <li class="nav-item dropdown">
@@ -80,9 +80,9 @@
                   Productos
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="{%url 'agregar_producto' %}"><i class="fas fa-plus"></i> Agregar</a></li>
+                  <li><a class="dropdown-item" href="{%url 'agregar_producto' %}"><span class="fas fa-plus"></span> Agregar</a></li>
                   <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="{%url 'lista_productos' %}"><i class="fas fa-list"></i> Lista productos</a></li>
+                  <li><a class="dropdown-item" href="{%url 'lista_productos' %}"><span class="fas fa-list"></span> Lista productos</a></li>
                   <li><hr class="dropdown-divider"></li>
                 
                 </ul>
@@ -96,7 +96,7 @@
               </li>
             </li>
             <a style="color:#fff; margin-top: 10px;margin-left: 100px" href="{%url 'carrito' %}" class="nav-item">
-              <i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i></a>
+              <span class="fa fa-shopping-cart fa-lg" aria-hidden="true"></span></a>
               {% endif %}
               
           </ul>
@@ -115,13 +115,13 @@
           <div id="sidebar-accordion" class="accordion">
             <div class="list-group">
               <a href="{%url 'agregar_artista' %}" class="list-group-item list-group-item-action bg-dark text-light">
-                <i class="fa fa-headphones mr-3" aria-hidden="true"></i>Agregar Artista
+                <span class="fa fa-headphones mr-3" aria-hidden="true"></span>Agregar Artista
               </a>
               <a href="{%url 'agregar_genero' %}" class="list-group-item list-group-item-action bg-dark text-light">
-                <i class="fas fa-music mr-3" aria-hidden="true"></i>Agregar Genero
+                <span class="fas fa-music mr-3" aria-hidden="true"></span>Agregar Genero
               </a>
               <a href="{%url 'agregar_producto' %}" class="list-group-item list-group-item-action bg-dark text-light">
-                <i class="fa fa-shopping-cart mr-3" aria-hidden="true"></i>Agregar Producto
+                <span class="fa fa-shopping-cart mr-3" aria-hidden="true"></span>Agregar Producto
               </a>
             </div>
           </div>
@@ -143,19 +143,19 @@
                   </div>
             <div class="col-md-4 col-lg-4 offset-lg-1 footer-contact wow fadeInDown">
               <h3>Contactanos</h3>
-                  <p><i class="fas fa-map-marker-alt"></i> Cercado de Lima 15081</p>
-                  <p><i class="fas fa-phone"></i> Telefono: 01-7930289</p>
-                  <p><i class="fas fa-envelope"></i> Email: vinilo.peru@gmail.com</p>
-                  <p><i class="fab fa-whatsapp"></i> Whatsapp: 929426588</p>
+                  <p><span class="fas fa-map-marker-alt"></span> Cercado de Lima 15081</p>
+                  <p><span class="fas fa-phone"></span> Telefono: 01-7930289</p>
+                  <p><span class="fas fa-envelope"></span> Email: vinilo.peru@gmail.com</p>
+                  <p><span class="fab fa-whatsapp"></span> Whatsapp: 929426588</p>
                   </div>
                   <div class="col-md-4 col-lg-3 footer-social wow fadeInUp">
                     <h3>Siguenos</h3>
                     <p>
-                      <a href="#"><i class="fab fa-facebook"></i></a> 
-            <a href="#"><i class="fab fa-twitter"></i></a> 
-            <a href="#"><i class="fab fa-google-plus-g"></i></a> 
-            <a href="#"><i class="fab fa-instagram"></i></a> 
-            <a href="#"><i class="fab fa-pinterest"></i></a>
+                      <a href="#"><span class="fab fa-facebook"></span></a> 
+            <a href="#"><span class="fab fa-twitter"></span></a> 
+            <a href="#"><span class="fab fa-google-plus-g"></span></a> 
+            <a href="#"><span class="fab fa-instagram"></span></a> 
+            <a href="#"><span class="fab fa-pinterest"></span></a>
                     </p>
                   </div>
             </div>

@@ -36,9 +36,9 @@
                 <form method = "get">
                     
                     {{myFilter.form}}
-                    <button class = "btn btn-primary " type = "submit"><i class="fas fa-search"></i> Buscar</button>
+                    <button class = "btn btn-primary " type = "submit"><span class="fas fa-search"></span> Buscar</button>
                     <button  class="btn btn-primary" type = "reset"> 
-                        <a href="{%url 'catalogo' %} " style="text-decoration:none; color:white"><i class="fas fa-sync-alt"></i> Volver</a>
+                        <a href="{%url 'catalogo' %} " style="text-decoration:none; color:white"><span class="fas fa-sync-alt"></span> Volver</a>
                     </button>
                    
                 </form>
@@ -66,7 +66,7 @@
                         </div>
                         
 
-                    <button  onclick="alerta()" data-product="{{p.id}}" data-action="add" type="button" class="btn-dark w-75 add-btn update-cart"><i class="fas fa-shopping-cart"></i> Añadir al Carrito</button>
+                    <button  onclick="alerta()" data-product="{{p.id}}" data-action="add" type="button" class="btn-dark w-75 add-btn update-cart"><span class="fas fa-shopping-cart"></span> Añadir al Carrito</button>
                     <hr>
                     <a href = "{% url 'perfil_producto' p.id %}" class="btn btn-dark"> Ver detalles </a>
                     </div>
