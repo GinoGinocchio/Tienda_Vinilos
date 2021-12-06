@@ -14,8 +14,8 @@ html, body{
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background: #000000;
-    transition: all .0.3s ease-in-out;    
+    background-color: #000000;
+    transition: all 0.3s ease-in-out;    
     background-image: url('https://www.fortitudemagazine.co.uk/wp-content/uploads/2013/02/the-beatles-wallpaper-hd-1024x576.jpg');
     animation:banner 28s infinite linear;
 }
@@ -46,7 +46,7 @@ html, body{
     border: 1px solid #ffffff;
     text-transform: uppercase;
     transition: all .3s ease-in-out;
-    font-family: 'RobotoCondensedRegular';  
+    font-family: 'RobotoCondensedRegular', sans-serif; 
 }
 .banner-content a:hover{
     background-color:#ffffff;
