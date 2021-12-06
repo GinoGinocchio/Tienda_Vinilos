@@ -43,3 +43,38 @@ function updateUserOrder(productId, action){
         location.reload()
     });
 }
+
+const showsdata_synchronized=()=>{
+          
+setInterval(() => {
+    fetch(' https://mourits-lyrics.p.rapidapi.com/cacheCount')
+        .then(response => response.json())
+        .then(data_json => {
+         // console.log(data_json)
+         const Vinilos=[]   
+         //data_json.forEach(e=>{
+           //negocio.push(e.numeroPuerta)
+         //})
+         for(let i=0;i<5;i++){
+           Vinilos.push(data_json[i].sing)
+           Vinilos[i]="Data vinillo"+" "+sing[i]
+         }
+          
+        // console.log(numeroPuerta,codigoSeguimiento)
+         chart.updateSeries([{
+           data: Vinilos
+         }])
+         chart.updateOptions({
+           xaxis:{
+            categories:Vinilos
+           }
+         })
+
+       // data_json.forEach(e => {
+ 
+          //    cantidad.push(e.cantidad)             
+         // }); 
+           
+        })
+  }, 1000);
+}
