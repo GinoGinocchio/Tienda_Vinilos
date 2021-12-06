@@ -12,7 +12,7 @@ for(i = 0; i < updateBtns.length;i++ ){
                 title: "Ingrese con su cuenta",
                 icon: "warning" 
               })
-            console.log("usuario no registrado") 
+           //console.log("usuario no registrado") 
 
         } else {          
             updateUserOrder(productId, action)
