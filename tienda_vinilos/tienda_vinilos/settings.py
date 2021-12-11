@@ -27,7 +27,7 @@ SECRET_KEY = 'aj2*q#^qv4h(0jl(2tmy+lmor_&8c)&ie2o)fk+*wxa-n!tj9)'
 # por lo que es necesario tener esta opción activada
 DEBUG = True # //NOSONAR
 
-ALLOWED_HOSTS = ['ginogs99.pythonanywhere.com','127.0.0.1']
+ALLOWED_HOSTS = ['ginoginocchio.pythonanywhere.com','127.0.0.1']
 
 MESSAGE_STORAGE="django.contrib.messages.storage.cookie.CookieStorage"
 
@@ -43,8 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'tienda_app',
-    'django_filters'
 
+    'django_filters',
 ]
 
 MIDDLEWARE = [
