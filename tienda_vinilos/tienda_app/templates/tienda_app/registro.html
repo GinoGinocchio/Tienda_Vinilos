@@ -1,11 +1,4 @@
-{% extends "tienda_app/base.html" %}
-
-{% block title %} Registro {% endblock %}
-
-
-
-{%block content %}
-{% load static %}
+{% extends "tienda_app/base.html" %} {% block title %} Registro {% endblock %} {%block content %} {% load static %}
 
 <link rel="stylesheet" href="{% static 'css/registro.css' %}">
 
@@ -13,53 +6,46 @@
     <div class="container" id="registration-form">
         <div class="image"></div>
         <div class="frm">
-            <h1><div class="center">Registrate</div></h1>
+            <h1>
+                <div class="center">Registrate</div>
+            </h1>
             <form id="estilo" action="" method="POST">
                 {% csrf_token %}
                 <div class="form-group">
-                    <label for="username"><span class="fas fa-user"></span> Usuario:</label><br>
-                    {{form.username}}
+                    <label for="username"><span class="fas fa-user"></span> Usuario:</label><br> {{form.username}}
                 </div>
                 <div class="form-group">
-                    <label for="first_name"><span class="fas fa-id-badge"></span> Nombre :</label><br>
-                    {{form.first_name}}
+                    <label for="first_name"><span class="fas fa-id-badge"></span> Nombre :</label><br> {{form.first_name}}
                 </div>
                 <div class="form-group">
-                    <label for="email"><span class="fas fa-at"></span> Email :</label><br>
-                    {{form.email}}
+                    <label for="email"><span class="fas fa-at"></span> Email :</label><br> {{form.email}}
                 </div>
                 <div class="form-group">
-                    <label for="celular"><span class="fas fa-phone-square"></span> Pais:</label><br>
-                    {{perfil_form.pais}}
+                    <label for="celular"><span class="fas fa-phone-square"></span> Pais:</label><br> {{perfil_form.pais}}
                 </div>
                 <div class="form-group">
-                    <label for="password1"><span class="fas fa-key"></span> Contraseña:</label><br>
-                    {{form.password1}}
+                    <label for="password1"><span class="fas fa-key"></span> Contraseña:</label><br> {{form.password1}}
                 </div>
                 <div class="form-group">
-                    <label for="password2">Confirmar Contraseña:</label><br>
-                    {{form.password2}}
+                    <label for="password2">Confirmar Contraseña:</label><br> {{form.password2}}
                 </div>
-                {% if form.errors %}
-                     {% for field in form %}
-                        {% for error in field.errors %}
-                            <script>
-                                Swal.fire({
-                                title: "{{error}}",
-                                icon: "error" 
-                                })      
-                            </script>
-                        {% endfor %}
-                    {% endfor %}
-                {% endif %}
+                {% if form.errors %} {% for field in form %} {% for error in field.errors %}
+                <script>
+                    Swal.fire({
+                        title: "{{error}}",
+                        icon: "error"
+                    })
+                </script>
+                {% endfor %} {% endfor %} {% endif %}
                 <div class="form-group">
-                    <div class="center"><input id="boton" type="submit" value="Crear"class="btn btn-success btn-lg"></input></div>
+                    <div class="center"><input id="boton" type="submit" value="Crear" class="btn btn-success btn-lg"></input>
+                    </div>
                 </div>
-                
+
             </form>
-            
+
         </div>
-        
+
     </div>
     .
 </body>

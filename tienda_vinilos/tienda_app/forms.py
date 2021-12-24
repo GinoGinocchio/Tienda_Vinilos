@@ -12,8 +12,9 @@ from django.forms import MultiWidget, TextInput
 
 class UserRegisterForm(UserCreationForm):
     username=forms.CharField(max_length=20)
-    first_name=forms.CharField(max_length=10)
-    password1 = forms.CharField(widget=forms.PasswordInput())
+    first_name=forms.CharField(max_length=20, widget=forms.TextInput(attrs={'class':'form-control' , 'autocomplete': 'off','pattern':'[A-Za-z ]+', 'title':'Solo caracteres alfabeticos'}))
+    email=forms.CharField(max_length=100)
+    password1 = forms.CharField(min_length=8, widget=forms.PasswordInput())
     password2= forms.CharField(widget=forms.PasswordInput())
 
     def clean_first_name(self):
