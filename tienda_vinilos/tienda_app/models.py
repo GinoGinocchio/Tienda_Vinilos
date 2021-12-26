@@ -37,7 +37,7 @@ class Producto(models.Model):
     nombre = models.CharField(max_length=70)
     genero = models.ForeignKey(Genero, on_delete=models.PROTECT)
     artista = models.ForeignKey(Artista, on_delete=models.PROTECT)
-    descripcion= models.TextField()
+    descripcion= models.TextField(max_length=700)
     stock = models.IntegerField()
     precio = models.IntegerField()
     

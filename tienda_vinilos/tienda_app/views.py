@@ -137,10 +137,10 @@ def procesar_orden(request):
                 ciudad=data['shipping']['city'],
                 estado=data['shipping']['state'],
                 codigo_postal=data['shipping']['zipcode'],
-			)
+            )
 
     else:
-	    print('Usuario no registrado')
+        print('Usuario no registrado')
         
     return JsonResponse('Subiendo Pago', safe=False)
 
