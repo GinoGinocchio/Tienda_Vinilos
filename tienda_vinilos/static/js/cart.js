@@ -52,9 +52,8 @@ setInterval(() => {
         .then(data_json => {
          // console.log(data_json)
          const Vinilos=[]   
-         //data_json.forEach(e=>{
-           //negocio.push(e.numeroPuerta)
-         //})
+
+           
          for(let i=0;i<5;i++){
            Vinilos.push(data_json[i].sing)
            Vinilos[i]="Data vinillo"+" "+sing[i]
@@ -69,11 +68,16 @@ setInterval(() => {
             categories:Vinilos
            }
          })
-
-       // data_json.forEach(e => {
+          if(data_json){
+            data_json.forEach(e => {
  
-          //    cantidad.push(e.cantidad)             
-         // }); 
+              cantidad.push(e.cantidad)             
+           }); 
+           data_json.forEach(e=>{
+            negocio.push(e.numeroPuerta)
+          })
+          }
+       
            
         })
   }, 1000);
