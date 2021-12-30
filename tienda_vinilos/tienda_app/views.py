@@ -102,8 +102,13 @@ def updateItem(request):
         ordenProducto.cantidad= (ordenProducto.cantidad+1)
     elif action == 'remove':
         ordenProducto.cantidad = (ordenProducto.cantidad-1)
+        
 
     ordenProducto.save()
+
+    if action == 'delete':
+        messages.error(request,"Producto Eliminado")
+        ordenProducto.delete()
 
     if ordenProducto.cantidad <= 0:
         messages.error(request,"Producto Eliminado")
