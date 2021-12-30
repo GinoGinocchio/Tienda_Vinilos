@@ -36,6 +36,7 @@
                     <div style="flex:1"><span class="fas fa-tags"></span> Precio</div>
                     <div style="flex:1">Cantidad</div>
                     <div style="flex:1"> <span class="fas fa-hand-holding-usd"></span> Total</div>
+                    <div style="flex:1"></div>
                 </div>
                 <br>
 
@@ -54,6 +55,11 @@
                         </div>
                     </div>
                     <div style="flex:1; margin-top: 80px">S/.{{p.get_total}}.00</div>
+                    <div style="flex:1; margin-top: 80px">
+                        <div class="cantidad">          
+                            <a data-product="{{p.producto.id}}" data-action="delete" class="btn update-cart btn-danger" alt="{{p.producto.id}}"><span class="fas fa-trash"></span> Eliminar</a>
+                        </div>
+                    </div>  
                 </div>
                 <br>
                 {% endfor %}
